@@ -1,0 +1,20 @@
+<%= form_for @athlete do |f| %>
+<%= f.label "Name:" %>
+<%= f.text_field :first_name %>
+<%= f.text_field :last_name %><br>
+<%= f.label "Hometown:" %>
+<%= f.text_field :hometown %><br>
+<%= f.label "State:" %>
+<%= f.select(:state, options_for_select(STATE)) %><br>
+<%= f.label "Jersey Number:" %>
+<%= f.text_field :jersey_number %><br>
+<%= f.label "Gender:" %>
+<%= f.select(:gender, options_for_select(['Male','Female'])) %><br>
+<%= f.label "Age:" %>
+<%= f.text_field :age %><br>
+<%= f.label "Weight:" %>
+<%= f.text_field :weight %><br>
+<%= f.label "Team:" %>
+<%= f.collection_select :team_id, Team.all, :id, :name %><br>
+<%= f.submit %>
+<% end %>

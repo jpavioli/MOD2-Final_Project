@@ -37,7 +37,7 @@ class AthletesController < ApplicationController
             redirect_to edit_athlete_path
         end
     end
-    
+
     def destroy
         @athlete.destroy
         redirect_to athlete_path

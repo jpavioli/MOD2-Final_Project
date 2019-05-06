@@ -1,7 +1,10 @@
 class Event < ApplicationRecord
+
+    #associations
     belongs_to :competition
     has_many :scores
     has_many :teams, through: :scores
+
 
 
     #validations
@@ -10,4 +13,5 @@ class Event < ApplicationRecord
     validates :description, length: {minimum: 10}
     validates :score_type, presence: true
     validates :competition_id, presence: true
+
 end
