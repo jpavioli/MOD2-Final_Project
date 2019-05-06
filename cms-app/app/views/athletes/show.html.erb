@@ -1,0 +1,27 @@
+<h1><%= @athlete.name %></h1>
+<p>Hometown: <%= @athlete.hometown %>, <%= @athlete.state %></p>
+<p>Stats:    <%= @athlete.gender %> | <%= @athlete.height_neat %> | <%= @athlete.weight %>lbs.</p>
+<p>Bio: <br>
+  <%= @athlete.bio %>
+</p>
+<br>
+<h3>Events Team Competing In:</h3>
+<p>
+  <ul>
+    <% @athlete.team.events each do |event| %>
+      <li>
+        <%= link_to event.title, event_path(event) %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+<h3>Remaining Roster:</h3>
+<p>
+  <ul>
+    <% @athlete.team.athletes each do |athlete| %>
+      <li>
+        <%= link_to athlete.name, athlete_path(athlete) %>
+      </li>
+    <% end %>
+  </ul>
+</p>
