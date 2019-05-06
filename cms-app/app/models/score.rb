@@ -5,7 +5,7 @@ class Score < ApplicationRecord
   belongs_to :event
 
   # #validations
-  # validates :score, numericality: { greater_than: 0 }
+  validates :score, numericality: { greater_than: 0 }
 
   #methods
 
