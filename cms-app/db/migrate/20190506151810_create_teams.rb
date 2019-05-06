@@ -4,7 +4,8 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :location
       t.string :sponsor
-      t.string :type
+      t.string :team_type
+      t.string :mascot
       t.integer :competition_id
       t.timestamps
     end
