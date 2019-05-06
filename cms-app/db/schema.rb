@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_05_06_151834) do
     t.string "title"
     t.string "description"
     t.string "score_type"
+    t.datetime "time"
     t.integer "competition_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -59,12 +60,8 @@ ActiveRecord::Schema.define(version: 2019_05_06_151834) do
     t.string "name"
     t.string "location"
     t.string "sponsor"
-<<<<<<< HEAD
-    t.string "type"
-=======
     t.string "team_type"
     t.string "mascot"
->>>>>>> 9514eeb84ea9ddd9d76e647f1d5864b755a4ddd0
     t.integer "competition_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
