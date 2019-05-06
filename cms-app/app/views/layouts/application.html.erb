@@ -11,5 +11,11 @@
 
   <body>
     <%= yield %>
+
+    <p>
+      <%= link_to "All Competitions", competitions_path %><br>
+      <%= link_to "All Events", events_path %><br>
+      <%= link_to "All Teams", teams_path %>
+    </p>
   </body>
 </html>

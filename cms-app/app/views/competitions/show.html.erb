@@ -1,0 +1,19 @@
+<h1><%= @competition.name %></h1>
+  <p>Location: <%= @competition.location %></p>
+  <p><%= @competition.description %></p>
+  <h3>Teams Competing: </h3>
+  <ul>
+    <% competition.teams.each do|team| %>
+      <li><%= link_to team.name, team_path(team) %></li>
+    <% end %>
+  </ul>
+  <h3>Events: </h3>
+  <ul>
+    <% competition.events.each do|event| %>
+      <li><%= link_to event.title, event_path(event) %></li>
+    <% end %>
+  </ul>
+  <br>
+  <%= form_for(@competition, controller: 'competition', method: 'edit') do |f| %>
+    <%= f.submit 'Edit Compeition' %>
+  <% end %>
