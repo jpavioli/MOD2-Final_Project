@@ -3,7 +3,7 @@
     <li>
       <h3><%= link_to competition.name %></h3>
       <p>Location: <%= competition.location %></p>
-      <p>Date:     <%= competition.datetime.strftime(%A %B %-d, %Y) %>
+      <p>Date:     <%= competition.datetime.strftime("%A %B %-d, %Y") %></p>
       <p><%= competition.description %></p>
     </li>
   <% end %>
