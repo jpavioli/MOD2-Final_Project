@@ -14,16 +14,28 @@ class AthletesController < ApplicationController
     end
 
     def create
-        @athlete = Athlete.create(athlete_params)
-        redirect_to @athlete
+        @athlete = Athlete.new(athlete_params)
+
+        if @athlete.valid? 
+            @athlete.save
+            redirect_to @athlete
+        else
+            flash[:error] = @athlete.errors.full_messages
+            redirect_to new_athlete_path
+        end
     end
 
     def edit
     end
 
     def update
-        @athlete.update(athlete_params)
-        redirect_to @athlete
+        if @athlete.valid? 
+            @athlete.save
+            redirect_to @athlete
+        else
+            flash[:error] = @athlete.errors.full_messages
+            redirect_to edit_athlete_path
+        end
     end
     
     def destroy

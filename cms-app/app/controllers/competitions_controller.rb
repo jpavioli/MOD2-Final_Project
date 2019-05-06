@@ -14,16 +14,28 @@ class CompetitionsController < ApplicationController
     end
 
     def create
-        @competition = Competition.create(competition_params)
-        redirect_to @competition
+        @competition = Competition.new(competition_params)
+
+        if @competition.valid? 
+            @competition.save
+            redirect_to @competition
+        else
+            flash[:error] = @competition.errors.full_messages
+            redirect_to new_competition_path
+        end
     end
 
     def edit
     end
 
     def update
-        @competition.update(competition_params)
-        redirect_to @competition
+        if @competition.valid? 
+            @competition.save
+            redirect_to @competition
+        else
+            flash[:error] = @competition.errors.full_messages
+            redirect_to edit_competition_path
+        end
     end
     
     def destroy

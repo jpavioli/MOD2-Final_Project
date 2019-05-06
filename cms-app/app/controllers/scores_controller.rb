@@ -14,16 +14,28 @@ class ScoresController < ApplicationController
     end
 
     def create
-        @score = Score.create(score_params)
-        redirect_to @score
+        @score = Score.new(score_params)
+
+        if @score.valid? 
+            @score.save
+            redirect_to @score
+        else
+            flash[:error] = @score.errors.full_messages
+            redirect_to new_score_path
+        end
     end
 
     def edit
     end
 
     def update
-        @score.update(score_params)
-        redirect_to @score
+        if @score.valid? 
+            @score.save
+            redirect_to @score
+        else
+            flash[:error] = @score.errors.full_messages
+            redirect_to edit_score_path
+        end
     end
     
     def destroy
