@@ -6,8 +6,8 @@ class Team < ApplicationRecord
   has_many :scores
   has_many :events, through: :scores
 
-  #validations
-  validates :name, presence: true
+  # #validations
+  # validates :name, presence: true
 
   #methods
 
