@@ -14,18 +14,30 @@ class TeamsController < ApplicationController
     end
 
     def create
-        @team = Team.create(team_params)
-        redirect_to @team
+        @team = Team.new(team_params)
+
+        if @team.valid? 
+            @team.save
+            redirect_to @team
+        else
+            flash[:error] = @team.errors.full_messages
+            redirect_to new_team_path
+        end
     end
 
     def edit
     end
 
     def update
-        @team.update(team_params)
-        redirect_to @team
+        if @team.valid? 
+            @team.save
+            redirect_to @team
+        else
+            flash[:error] = @team.errors.full_messages
+            redirect_to edit_team_path
+        end
     end
-    
+
     def destroy
         @team.destroy
         redirect_to team_path
@@ -34,7 +46,7 @@ class TeamsController < ApplicationController
     private
 
     def team_params
-        params.require(:team).permit(:name, :location, :sponsor, :type, :competition_id)
+        params.require(:team).permit(:name, :location, :sponsor, :team_type, :mascot, :competition_id)
     end
 
     def current_team

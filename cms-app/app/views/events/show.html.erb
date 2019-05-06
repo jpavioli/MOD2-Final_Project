@@ -1,15 +1,18 @@
 <h1><%= @event.title %></h1>
-<p><%= @event.time.strftime(%m/%d/%y - %l:%M %P) %></p>
-<p><%= @event.description %></p>
-<p><%= @event.score_type %></p>
-<br>
+<p>Event Time: <%= @event.time == nil ? "" : @event.time.strftime("%m/%d/%y - %l:%M %P") %><br>
+  Event Discription: <br>
+  <%= @event.description %></p>
 <h3>Teams Competing</h3>
 <p>
   <ul>
-    <% @event.teams each do |team| %>
+    <% @event.teams.uniq.each do |team| %>
       <li>
         <%= link_to team.full_name, team_path(team) %>
       </li>
     <% end %>
   </ul>
 </p>
+
+<%= form_for(@event, controller: 'event', method: 'edit') do |f| %>
+  <%= f.submit 'Edit Event' %>
+<% end %>

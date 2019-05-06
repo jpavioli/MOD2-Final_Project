@@ -14,16 +14,28 @@ class EventsController < ApplicationController
     end
 
     def create
-        @event = Event.create(event_params)
-        redirect_to (@event)
+        @event = Event.new(event_params)
+
+        if @event.valid? 
+            @event.save
+            redirect_to @event
+        else
+            flash[:error] = @event.errors.full_messages
+            redirect_to new_event_path
+        end
     end
 
     def edit
     end
 
     def update
-        @event.update(event_params)
-        redirect_to @event
+        if @event.valid? 
+            @event.save
+            redirect_to @event
+        else
+            flash[:error] = @event.errors.full_messages
+            redirect_to edit_event_path
+        end
     end
 
     def destroy
@@ -34,7 +46,7 @@ class EventsController < ApplicationController
     private
 
     def event_params
-        params.require(:event).permit(:title, :description, :score_type)
+        params.require(:event).permit(:title, :description, :score_type, :competition_id)
     end
 
     def current_event
