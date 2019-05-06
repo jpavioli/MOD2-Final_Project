@@ -1,0 +1,8 @@
+<h1>All Teams</h1>
+<p>
+  <% @teams.each do |team|%>
+    <li>
+        <%= link_to team.full_name, team_path(team) %> | <%= link_to team.competition.name, competition_path(team.competition) %>
+    </li>
+  <%end%>
+</p>
