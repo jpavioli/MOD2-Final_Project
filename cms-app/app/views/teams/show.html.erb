@@ -1,0 +1,24 @@
+<h1><%= @team.name %></h1>
+<p>Location: <%= @team.location %></p>
+<p>Sponsor:  <%= @team.sponsor %></p>
+<br>
+<h3>Events Competing In:</h3>
+<p>
+  <ul>
+    <% @team.events each do |event| %>
+      <li>
+        <%= link_to event.title, event_path(event) %>
+      </li>
+    <% end %>
+  </ul>
+</p>
+<h3>Athletes:</h3>
+<p>
+  <ul>
+    <% @team.athletes each do |athlete| %>
+      <li>
+        <%= link_to athlete.name, athlete_path(athlete) %>
+      </li>
+    <% end %>
+  </ul>
+</p>

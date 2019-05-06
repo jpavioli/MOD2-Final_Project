@@ -1,5 +1,9 @@
-<% @events.each do |event|%>
+<h1>All Events</h1>
+<p>
+  <% @events.each do |event|%>
     <li>
-        <%= link_to event.title, event_path(event) %>
+        <%= link_to event.title, event_path(event) %> | <%= link_to event.competition.name, competition_path(event.competition) %> <br>
+        <%= event.description %>
     </li>
-    <%end%>
+  <%end%>
+</p>

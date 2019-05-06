@@ -1,0 +1,9 @@
+<h1>All Competitions</h1>
+  <% @competitions.each do |competition| %>
+    <li>
+      <h3><%= link_to competition.name %></h3>
+      <p>Location: <%= competition.location %></p>
+      <p>Date:     <%= competition.datetime.strftime(%A %B %-d, %Y) %>
+      <p><%= competition.description %></p>
+    </li>
+  <% end %>
