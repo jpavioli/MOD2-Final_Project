@@ -16,4 +16,8 @@ class Athlete < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  def height_neat
+    "#{(height/12).floor} ft #{height%12} in"
+  end
+
 end
