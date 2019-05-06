@@ -25,7 +25,7 @@ class AthletesController < ApplicationController
         @athlete.update(athlete_params)
         redirect_to @athlete
     end
-    
+
     def destroy
         @athlete.destroy
         redirect_to athlete_path

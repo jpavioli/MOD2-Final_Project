@@ -13,7 +13,7 @@ Event.destroy_all
 Competition.destroy_all
 Score.destroy_all
 
-2.times do 
+2.times do
         competition = Competition.create(
         name: Faker::TvShows::BreakingBad.episode,
         description: Faker::Hipster.paragraph(3),
@@ -35,8 +35,8 @@ end
         competition_id: Competition.all.sample.id
     )
 end
-30.times do 
-    
+30.times do
+
     Athlete.create(
       first_name: Faker::Name.name,
       last_name: Faker::Name.name,
@@ -52,11 +52,12 @@ end
     )
 end
 
-5.times do 
+5.times do
     Event.create({
     title: Faker::Hipster.sentence(3),
     description: Faker::Hipster.paragraph(2),
-    score_type: ["time", "points"].sample,
+    time: Faker::Time.forward(6, :morning),
+    score_type: ["time", "points","distance","load"].sample,
     competition_id: Competition.all.sample.id
 })
 end
@@ -68,16 +69,3 @@ end
     team_id: Team.all.sample.id
     )
 end
-
-
-  
-
-
-
-
-
-
-
-
-
-

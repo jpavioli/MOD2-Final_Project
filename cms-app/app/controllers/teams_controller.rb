@@ -25,7 +25,7 @@ class TeamsController < ApplicationController
         @team.update(team_params)
         redirect_to @team
     end
-    
+
     def destroy
         @team.destroy
         redirect_to team_path
