@@ -16,7 +16,7 @@ class AthletesController < ApplicationController
     def create
         @athlete = Athlete.new(athlete_params)
 
-        if @athlete.valid? 
+        if @athlete.valid?
             @athlete.save
             redirect_to @athlete
         else
@@ -26,10 +26,11 @@ class AthletesController < ApplicationController
     end
 
     def edit
+      @states = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ]
     end
 
     def update
-        if @athlete.valid? 
+        if @athlete.valid?
             @athlete.save
             redirect_to @athlete
         else

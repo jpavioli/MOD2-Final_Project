@@ -14,7 +14,7 @@ Competition.destroy_all
 Score.destroy_all
 
 2.times do
-        competition = Competition.create(
+        Competition.create(
         name: Faker::TvShows::BreakingBad.episode,
         description: Faker::Hipster.paragraph(3),
         location: Faker::Movies::StarWars.planet,
@@ -36,7 +36,6 @@ end
     )
 end
 30.times do
-
     Athlete.create(
       first_name: Faker::Name.name,
       last_name: Faker::Name.name,

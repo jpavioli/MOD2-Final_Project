@@ -26,6 +26,4 @@
   </ul>
 </p>
 
-<%= form_for(athlete_path(@athlete), controller: 'athlete', method: :edit) do |f| %>
-  <%= f.submit 'Edit Athlete' %>
-<% end %>
+<%= link_to "Edit Athlete", "/athletes/#{@athlete.id}/edit" %>
