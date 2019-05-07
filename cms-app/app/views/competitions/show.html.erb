@@ -16,6 +16,8 @@
     <% end %>
   </ul>
   <br>
-  <%= form_for(@competition, controller: 'competition', method: 'edit') do |f| %>
-    <%= f.submit 'Edit Compeition' %>
-  <% end %>
+  
+<%= link_to "Edit Competition", "/competitions/#{@competition.id}/edit" %>
+
+
+

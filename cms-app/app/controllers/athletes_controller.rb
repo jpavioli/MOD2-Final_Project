@@ -11,9 +11,11 @@ class AthletesController < ApplicationController
 
     def new
         @athlete = Athlete.new
+        @states = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ]
     end
 
     def create
+        
         @athlete = Athlete.new(athlete_params)
 
         if @athlete.valid?
@@ -26,12 +28,13 @@ class AthletesController < ApplicationController
     end
 
     def edit
-      @states = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ]
+        @states = [ 'AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY' ]
     end
 
     def update
+        @athlete = Athlete.new(athlete_params)
         if @athlete.valid?
-            @athlete.save
+            @athlete.update(athlete_params)
             redirect_to @athlete
         else
             flash[:error] = @athlete.errors.full_messages
@@ -41,7 +44,7 @@ class AthletesController < ApplicationController
 
     def destroy
         @athlete.destroy
-        redirect_to athlete_path
+        redirect_to athletes_path
     end
 
     private
@@ -50,7 +53,7 @@ class AthletesController < ApplicationController
         params.require(:athlete).permit(:first_name, :last_name, :hometown, :state, :bio, :gender, :jersey_number, :age, :weight, :height, :team_id)
     end
 
-    def current_athlete
+    def current_athlete 
         @athlete = Athlete.find(params[:id])
     end
 
