@@ -29,6 +29,8 @@ class TeamsController < ApplicationController
     end
 
     def update
+        @team = Team.new(team_params)
+        
         if @team.valid? 
             @team.update(team_params)
             redirect_to @team

@@ -24,6 +24,5 @@
   </ul>
 </p>
 
-<%= form_for(@team, controller: 'team', method: 'edit') do |f| %>
-  <%= f.submit 'Edit Team' %>
-<% end %>
+<%= link_to "Edit Team", "/teams/#{@team.id}/edit" %>
+
