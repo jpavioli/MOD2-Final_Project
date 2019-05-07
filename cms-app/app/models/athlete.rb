@@ -4,6 +4,7 @@ class Athlete < ApplicationRecord
   belongs_to :team
 
   # #validations
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :bio, length: { maximum: 500 }
