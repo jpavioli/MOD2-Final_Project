@@ -30,7 +30,7 @@ class EventsController < ApplicationController
 
     def update
         if @event.valid? 
-            @event.save
+            @event.update(event_params)
             redirect_to @event
         else
             flash[:error] = @event.errors.full_messages

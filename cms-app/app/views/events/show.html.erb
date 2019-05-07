@@ -1,7 +1,9 @@
 <h1><%= @event.title %></h1>
 <p>Event Time: <%= @event.time == nil ? "" : @event.time.strftime("%m/%d/%y - %l:%M %P") %><br>
   Event Discription: <br>
-  <%= @event.description %></p>
+  <%= @event.description %><br>
+  Score Type:
+  <%= @event.score_type %></p>
 <h3>Teams Competing</h3>
 <p>
   <ul>
@@ -13,6 +15,5 @@
   </ul>
 </p>
 
-<%= form_for(@event, controller: 'event', method: 'edit') do |f| %>
-  <%= f.submit 'Edit Event' %>
-<% end %>
+
+<%= link_to "Edit Event", "/events/#{@event.id}/edit" %>
