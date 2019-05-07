@@ -1,6 +1,6 @@
 class CompetitionsController < ApplicationController
 
-    before_action :current_competition, only: [:show, :edit, :update, :destroy]
+    before_action :current_competition, only: [:show, :edit, :update, :destroy, :stats]
 
     def index
         @competitions = Competition.all
@@ -15,8 +15,7 @@ class CompetitionsController < ApplicationController
 
     def create
         @competition = Competition.new(competition_params)
-
-        if @competition.valid? 
+        if @competition.valid?
             @competition.save
             redirect_to @competition
         else
@@ -29,7 +28,7 @@ class CompetitionsController < ApplicationController
     end
 
     def update
-        if @competition.valid? 
+        if @competition.valid?
             @competition.save
             redirect_to @competition
         else
@@ -37,10 +36,14 @@ class CompetitionsController < ApplicationController
             redirect_to edit_competition_path
         end
     end
-    
+
     def destroy
         @competition.destroy
         redirect_to competition_path
+    end
+
+    def stats
+      render :'/competitions/stats.html.erb'
     end
 
     private
