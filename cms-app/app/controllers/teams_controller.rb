@@ -30,7 +30,7 @@ class TeamsController < ApplicationController
 
     def update
         if @team.valid? 
-            @team.save
+            @team.update(team_params)
             redirect_to @team
         else
             flash[:error] = @team.errors.full_messages
@@ -40,7 +40,7 @@ class TeamsController < ApplicationController
 
     def destroy
         @team.destroy
-        redirect_to team_path
+        redirect_to teams_path
     end
 
     private

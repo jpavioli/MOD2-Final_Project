@@ -29,8 +29,9 @@ class CompetitionsController < ApplicationController
     end
 
     def update
+        @competition = Competition.new(competition_params)
         if @competition.valid? 
-            @competition.save
+            @competition.update(competition_params)
             redirect_to @competition
         else
             flash[:error] = @competition.errors.full_messages
@@ -40,7 +41,7 @@ class CompetitionsController < ApplicationController
     
     def destroy
         @competition.destroy
-        redirect_to competition_path
+        redirect_to competitions_path
     end
 
     private

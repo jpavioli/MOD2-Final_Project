@@ -15,7 +15,6 @@ class Athlete < ApplicationRecord
   validates :weight, numericality: { only_integer: true, greater_than: 0 }
   validates :weight, presence: true
   validates :jersey_number, numericality: { only_integer: true, greater_than: 0 }
-  validates :jersey_number, uniqueness: true
 
   #methods
   def name
