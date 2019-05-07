@@ -8,6 +8,9 @@ class Team < ApplicationRecord
 
   #validations
   validates :name, presence: true
+  validates :location, presence: true
+  validates :team_type, presence: true
+  validates :competition_id, presence: true
 
   #methods
   def full_name

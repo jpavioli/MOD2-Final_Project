@@ -1,0 +1,10 @@
+<h1>All Scores</h1>
+<ul>
+  <% @scores.each do |score|%>
+    <li>
+      <%= link_to score.score_output, score_path(score) %> |
+      <%= link_to score.event.title, event_path(score.event) %> |
+      <%= link_to score.team.name, team_path(score.team) %>
+    </li>
+  <% end %>
+</ul>

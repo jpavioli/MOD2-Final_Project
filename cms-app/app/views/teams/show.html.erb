@@ -1,11 +1,12 @@
 <h1><%= @team.name %></h1>
-<p>Location: <%= @team.location %></p>
-<p>Sponsor:  <%= @team.sponsor %></p>
-<br>
+<p>
+  Location: <%= @team.location %><br>
+  Sponsor:  <%= @team.sponsor %>
+</p>
 <h3>Events Competing In:</h3>
 <p>
   <ul>
-    <% @team.events each do |event| %>
+    <% @team.events.uniq.each do |event| %>
       <li>
         <%= link_to event.title, event_path(event) %>
       </li>
@@ -15,10 +16,13 @@
 <h3>Athletes:</h3>
 <p>
   <ul>
-    <% @team.athletes each do |athlete| %>
+    <% @team.athletes.each do |athlete| %>
       <li>
         <%= link_to athlete.name, athlete_path(athlete) %>
       </li>
     <% end %>
   </ul>
 </p>
+
+<%= link_to "Edit Team", "/teams/#{@team.id}/edit" %>
+

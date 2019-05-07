@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+git_source(:github) do |repo_name|
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  "https://github.com/#{repo_name}.git"
+end
 
 ruby '2.6.1'
 
@@ -25,10 +28,12 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
+gem 'bcrypt', '~> 3.1.7'
+# Using to generate fake seed data for testing. And you know... them hipster things. I wonder if anyone will see this. Well if you do Hi there... Okay enough of this time to get back to work. P.s. Tom and Justin are pretty cool. Ok bai now!
+gem 'faker'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
+gem 'bootstrap-sass'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,0 +1,6 @@
+<h1><%= @score.event.title%></h1>
+Team: <%= @score.team.name%><br>
+Event Type: <%= @score.event.score_type %><br>
+Score: <%= @score.score%><br>
+<br>
+<%= link_to "Edit Score", "/scores/#{@score.id}/edit" %>
