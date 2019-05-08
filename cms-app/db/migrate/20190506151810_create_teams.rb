@@ -7,6 +7,7 @@ class CreateTeams < ActiveRecord::Migration[5.2]
       t.string :team_type
       t.string :mascot
       t.integer :competition_id
+      t.integer :team_manager_id
       t.timestamps
     end
   end

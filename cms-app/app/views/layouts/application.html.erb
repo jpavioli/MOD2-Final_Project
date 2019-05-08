@@ -10,14 +10,28 @@
   </head>
 
   <body>
-    <%= yield %>
+    <% if session[:user_id] %>
+      <%= form_tag("/login/#{User.find(session[:user_id]).id}/logoff", controller: "users", method: "session_logoff") do %>
+        <%= submit_tag("Log-out")%>
+      <%end%>
+    <%else%>
+      <%= link_to "Log in" , login_path %>
+    <%end%>
+    Currently Logged in as: <%= session[:user_id] ? "#{User.find(session[:user_id]).name} | Access: #{User.find(session[:user_id]).user_type}" : "No one" %>
 
+    <%= yield %>
+    <br>
+    ---
+    <br><br>
     <p>
       <%= link_to "All Competitions", competitions_path %> |
       <%= link_to "All Events", events_path %> |
       <%= link_to "All Teams", teams_path %> |
       <%= link_to "All Scores", scores_path %> |
-      <%= link_to "All Athletes", athletes_path %>
+      <%= link_to "All Athletes", athletes_path %><br>
+      <% if session[:user_id] != nil %>
+        <%= link_to "Dashboard", User.find(session[:user_id]) %>
+      <% end %>
     </p>
   </body>
 </html>
