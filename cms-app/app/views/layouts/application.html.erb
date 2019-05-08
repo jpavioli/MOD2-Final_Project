@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-  
+
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="GYm,fitness,business,company,agency,multipurpose,modern,bootstrap4">
-  
+
   <meta name="author" content="Themefisher.com">
 
   <title>GymFit| Fitness template</title>
@@ -44,11 +44,9 @@
     <%end%>
     Currently Logged in as: <%= session[:user_id] ? "#{User.find(session[:user_id]).name} | Access: #{User.find(session[:user_id]).user_type}" : "No one" %>
 
-    <%= yield %>
     <br>
     ---
     <br><br>
-
 
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
