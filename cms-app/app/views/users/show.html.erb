@@ -1,0 +1,46 @@
+<h1>Welcome <%= @user.name %></h1>
+
+  <% if @competitions != [] %>
+    <h2>Competitions:</h2>
+    <p>
+    <% @competitions.each do|competition| %>
+      <h3><%= link_to competition.name, competitions_path(competition) %></h3>
+      <p><%= competition.description %></p>
+    <% end %>
+    </p>
+  <% end %>
+
+
+  <% if @events != [] %>
+    <h2>Events:</h2>
+    <p>
+      <% @events.each do|event| %>
+        <li><%= link_to event.title, event_path(event) %></li>
+      <% end %>
+    </p>
+  <% end %>
+
+  <% if @teams != [] %>
+    <h2>Teams:</h2>
+    <p>
+    <% @teams.each do|team| %>
+      <li><%= link_to team.name, team_path(team) %></li>
+    <% end %>
+    </p>
+  <% end %>
+
+
+
+<% if @user.user_type == "Competition Manager" %>
+  <%= link_to "Add Competition", "/competitions/new" %> |
+  <%= link_to "Add Event", "/events/new" %> |
+  <%= link_to "Add Team", "/teams/new" %><br>
+<% end %>
+
+<% if @user.user_type == "Event Manager" %>
+  <%= link_to "Add Event", "/events/new" %><br>
+<% end %>
+
+<% if @user.user_type == "Team Manager" %>
+  <%= link_to "Add Team", "/teams/new" %><br>
+<% end %>
