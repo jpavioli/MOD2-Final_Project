@@ -4,7 +4,7 @@
   <%end%>
 <%end%>
 
-<%= form_tag "/login", controller:"users", method:"session_login" do %>
+<%= form_tag "/login", controller:"users", method:"post", action:"users#session_logofflogin" do %>
   <%= label_tag "Username:" %>
   <%= text_field_tag :username %><br/>
   <%= label_tag "Password:" %>

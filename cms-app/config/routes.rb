@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/competitions/:id/stats", to: "competitions#stats"
   get "/login", to: "users#login"
   post "/login", to: "users#session_login"
-  post "/login/:id/logoff", to: "users#session_logoff"
+  delete "/logoff", to: "users#session_logoff"
   get "/competitions/:id/event/new", to: "events#new"
   get "/competitions/:id/team/new", to: "teams#new"
 
