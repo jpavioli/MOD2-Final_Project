@@ -1,16 +1,20 @@
 class CompetitionsController < ApplicationController
 
     before_action :current_competition, only: [:show, :edit, :update, :destroy, :stats]
+    before_action :competition_authenticate, only: [:new, :create]
+    before_action :competition_user_authinticate, only: [:edit, :update, :destroy]
 
     def index
         @competitions = Competition.all
     end
 
     def show
+      @user = User.find(session[:user_id])
     end
 
     def new
         @competition = Competition.new
+        @competition_managers = User.select {|user| user.user_type == "Competition Manager"}
     end
 
     def create
@@ -25,12 +29,13 @@ class CompetitionsController < ApplicationController
     end
 
     def edit
+      @competition_managers = User.select {|user| user.user_type == "Competition Manager"}
     end
 
     def update
 
         @competition = Competition.new(competition_params)
-        if @competition.valid? 
+        if @competition.valid?
             @competition.update(competition_params)
 
             redirect_to @competition
@@ -52,7 +57,7 @@ class CompetitionsController < ApplicationController
     private
 
     def competition_params
-        params.require(:competition).permit(:name, :description, :location, :datetime, :status)
+        params.require(:competition).permit(:name, :description, :location, :datetime, :status, :competition_manager_id)
     end
 
     def current_competition

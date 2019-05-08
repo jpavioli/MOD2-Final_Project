@@ -16,8 +16,8 @@
     <% end %>
   </ul>
   <br>
-  
-<%= link_to "Edit Competition", "/competitions/#{@competition.id}/edit" %>
-
-
-
+<% if @user.id == @competition.competition_manager_id %>
+  <%= link_to "Edit Competition", "/competitions/#{@competition.id}/edit" %><br>
+  <%= link_to "Add Event", "/competitions/#{@competition.id}/event/new" %><br>
+  <%= link_to "Add Team", "/competitions/#{@competition.id}/team/new" %><br>
+<% end %>

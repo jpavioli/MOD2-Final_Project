@@ -17,5 +17,7 @@
 <%= f.text_field :mascot %><br>
 <%= f.label "Competition:" %>
 <%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"}%><br>
+<%= f.label "Team Manager:" %>
+<%= f.collection_select :team_manager_id, @team_managers, :id, :name, {:prompt => "Please select a Team Manger"}%><br>
 <%= f.submit %>
 <%end%>
