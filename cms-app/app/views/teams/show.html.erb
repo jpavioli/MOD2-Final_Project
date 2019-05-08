@@ -1,28 +1,59 @@
-<h1><%= @team.name %></h1>
-<p>
-  Location: <%= @team.location %><br>
-  Sponsor:  <%= @team.sponsor %>
-</p>
-<h3>Events Competing In:</h3>
-<p>
-  <ul>
-    <% @team.events.uniq.each do |event| %>
-      <li>
-        <%= link_to event.title, event_path(event) %>
-      </li>
-    <% end %>
-  </ul>
-</p>
-<h3>Athletes:</h3>
-<p>
-  <ul>
-    <% @team.athletes.each do |athlete| %>
-      <li>
-        <%= link_to athlete.name, athlete_path(athlete) %>
-      </li>
-    <% end %>
-  </ul>
-</p>
 
-<%= link_to "Edit Team", "/teams/#{@team.id}/edit" %>
 
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+    <h1 class= "text-white"><%= @team.name %></h1>
+    <p>
+    <span class= "text-white">
+      Location: <%= @team.location %><br>
+      Sponsor:  <%= @team.sponsor %>
+      </span>
+    </p>
+    </div>
+    <div class="col">
+      <h3 class= "text-white">Athletes:</h3>
+          <p>
+            <span class= "text-white">
+              <ul>
+                <% @team.athletes.each do |athlete| %>
+                  <li>
+                    <%= link_to athlete.name, athlete_path(athlete) %>
+                  </li>
+                <% end %>
+              </ul>
+            </span>
+          </p>
+          </div>
+      <div class="col">
+      <h3 class= "text-white">Events Competing In:</h3>
+        <p>
+          <span class= "text-white">
+            <ul>
+              <% @team.events.uniq.each do |event| %>
+                <li>
+                  <%= link_to event.title, event_path(event) %>
+                </li>
+              <% end %>
+            </ul>
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <h4><%= link_to "Edit Team", "/teams/#{@team.id}/edit" %></h4>
+    </div>
+    <div class="col-sm">
+      <!-- intentionally left blank -->
+    </div>
+    <div class="col-sm">
+      <!-- intentionally left blank -->
+    </div>
+  </div>
+</div>
