@@ -1,6 +1,8 @@
 class AthletesController < ApplicationController
 
     before_action :current_athlete, only: [:show, :edit, :update, :destroy]
+    before_action :team_authenticate, only: [:new, :create]
+    before_action :team_user_authenticate, only: [:edit, :update, :destroy]
 
     def index
         @athletes = Athlete.all
@@ -15,9 +17,7 @@ class AthletesController < ApplicationController
     end
 
     def create
-        
         @athlete = Athlete.new(athlete_params)
-
         if @athlete.valid?
             @athlete.save
             redirect_to @athlete
@@ -53,7 +53,7 @@ class AthletesController < ApplicationController
         params.require(:athlete).permit(:first_name, :last_name, :hometown, :state, :bio, :gender, :jersey_number, :age, :weight, :height, :team_id)
     end
 
-    def current_athlete 
+    def current_athlete
         @athlete = Athlete.find(params[:id])
     end
 

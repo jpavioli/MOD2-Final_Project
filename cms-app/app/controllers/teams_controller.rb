@@ -1,6 +1,8 @@
 class TeamsController < ApplicationController
 
     before_action :current_team, only: [:show, :edit, :update, :destroy]
+    before_action :team_authenticate, only: [:new, :create]
+    before_action :team_user_authenticate, only: [:edit, :update, :destroy]
 
     def index
         @teams = Team.all
@@ -11,12 +13,12 @@ class TeamsController < ApplicationController
 
     def new
         @team = Team.new
+        @team_managers = User.select {|user| user.user_type == "Team Manager" || user.user_type == "Competition Manager" }
     end
 
     def create
         @team = Team.new(team_params)
-
-        if @team.valid? 
+        if @team.valid?
             @team.save
             redirect_to @team
         else
@@ -26,12 +28,13 @@ class TeamsController < ApplicationController
     end
 
     def edit
+      @team_managers = User.select {|user| user.user_type == "Team Manager" || user.user_type == "Competition Manager" }
     end
 
     def update
         @team = Team.new(team_params)
-        
-        if @team.valid? 
+
+        if @team.valid?
             @team.update(team_params)
             redirect_to @team
         else

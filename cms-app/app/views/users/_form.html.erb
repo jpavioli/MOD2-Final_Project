@@ -1,0 +1,17 @@
+<% if flash[:error] %>
+  <% flash[:error].each do |e| %>
+    <p><%= e %></p>
+  <%end%>
+<%end%>
+
+<%= form_for @user do |f| %>
+  <%= f.label "Name:" %>
+  <%= f.text_field :name %><br/>
+  <%= f.label "Profile Type:" %>
+  <%= f.select(:user_type, options_for_select(['Competition Manager','Event Manager','Team Manager'].map{|g| [g,g]})) %><br>
+  <%= f.label "Username:" %>
+  <%= f.text_field :username %><br/>
+  <%= f.label "Password:" %>
+  <%= f.password_field :password %><br>
+  <%= f.submit %>
+<% end %>
