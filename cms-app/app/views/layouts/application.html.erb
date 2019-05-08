@@ -44,7 +44,6 @@
     <%end%>
     Currently Logged in as: <%= session[:user_id] ? "#{User.find(session[:user_id]).name} | Access: #{User.find(session[:user_id]).user_type}" : "No one" %>
 
-    <%= yield %>
     <br>
     ---
     <br><br>
