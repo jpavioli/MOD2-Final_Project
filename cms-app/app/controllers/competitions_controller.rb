@@ -28,7 +28,6 @@ class CompetitionsController < ApplicationController
     end
 
     def update
-
         @competition = Competition.new(competition_params)
         if @competition.valid? 
             @competition.update(competition_params)

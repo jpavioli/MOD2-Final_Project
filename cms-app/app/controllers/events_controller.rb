@@ -29,6 +29,7 @@ class EventsController < ApplicationController
     end
 
     def update
+        @event = Event.new(event_params)
         if @event.valid? 
             @event.update(event_params)
             redirect_to @event

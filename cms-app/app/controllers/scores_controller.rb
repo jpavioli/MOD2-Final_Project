@@ -29,6 +29,7 @@ class ScoresController < ApplicationController
     end
 
     def update
+        @score = Score.new(score_params)
         if @score.valid? 
             @score.save
             redirect_to @score
