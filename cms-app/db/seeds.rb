@@ -19,6 +19,7 @@ Score.destroy_all
         description: Faker::Hipster.paragraph(3),
         location: Faker::Movies::StarWars.planet,
         datetime: Faker::Time.forward(5, :morning),
+        competition_manager_id: 1,
         status: "Scheduled"
         )
 end
@@ -32,6 +33,7 @@ end
         sponsor: Faker::Company.name,
         team_type: Faker::Team.sport,
         mascot: Faker::Team.mascot,
+        team_manager_id: 1,
         competition_id: Competition.all.sample.id
     )
 end
@@ -52,13 +54,13 @@ end
 end
 
 5.times do
-    Event.create({
+    Event.create(
     title: Faker::Hipster.sentence(3),
     description: Faker::Hipster.paragraph(2),
     time: Faker::Time.forward(6, :morning),
     score_type: ["time", "points","distance","load"].sample,
-    competition_id: Competition.all.sample.id
-})
+    event_manager_id: 1,
+    competition_id: Competition.all.sample.id)
 end
 
 50.times do
@@ -68,3 +70,5 @@ end
     team_id: Team.all.sample.id
     )
 end
+
+
