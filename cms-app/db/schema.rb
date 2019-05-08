@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_214619) do
     t.string "location"
     t.datetime "datetime"
     t.string "status"
+    t.integer "competition_manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -44,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_214619) do
     t.string "score_type"
     t.datetime "time"
     t.integer "competition_id"
+    t.integer "event_manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -63,6 +65,7 @@ ActiveRecord::Schema.define(version: 2019_05_07_214619) do
     t.string "team_type"
     t.string "mascot"
     t.integer "competition_id"
+    t.integer "team_manager_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -10,7 +10,7 @@
 <%= f.label "Description:" %>
 <%= f.text_field :description %><br/>
 <%= f.label "Score Type:" %>
-<%= f.text_field :score_type %><br>
+<%= f.select(:score_type, options_for_select(['Time','Points','Distance','Load'].map{|g| [g,g]})) %><br>
 <%= f.label "Time:" %>
 <%= f.time_field :time %><br>
 <%= f.label "Competition:" %>
