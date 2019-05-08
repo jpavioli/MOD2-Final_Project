@@ -1,12 +1,12 @@
 <!doctype html>
 <html lang="en">
   <head>
-  
+
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="GYm,fitness,business,company,agency,multipurpose,modern,bootstrap4">
-  
+
   <meta name="author" content="Themefisher.com">
 
   <title>Mod 2 Project</title>
@@ -35,20 +35,6 @@
 
   <body style="background-color: #4d4d4d">
 
-    <% if session[:user_id] %>
-      <%= form_tag("/login/#{User.find(session[:user_id]).id}/logoff", controller: "users", method: "session_logoff") do %>
-        <%= submit_tag("Log-out")%>
-      <%end%>
-    <%else%>
-      <%= link_to "Log in" , login_path %>
-    <%end%>
-    Currently Logged in as: <%= session[:user_id] ? "#{User.find(session[:user_id]).name} | Access: #{User.find(session[:user_id]).user_type}" : "No one" %>
-
-    <br>
-    ---
-    <br><br>
-
-
   <!-- Navigation -->
 
   <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
@@ -67,12 +53,20 @@
           <li class="nav-item">
             <a class="nav-link js-scroll-trigger" href="/athletes">Athletes</a>
           </li>
-          <li class="nav-item">
-          <a class="nav-link js-scroll-trigger" href=<%= session[:user_id] ? "/login/:id/logoff": "/login" %> > <%= session[:user_id] ? "Logoff" : "Login" %></a>
-            <!-- keeping below html incase above does not work -->
-            <!-- <a class="nav-link js-scroll-trigger" href="/login">Login</a> -->
-            <!-- <a class="nav-link js-scroll-trigger" href="/login/:id/logoff">Logoff</a> -->
-          </li>
+          <% if session[:user_id] %>
+            <li class="nav-item">
+              <a class= "nav-link js-scroll-trigger text-info" href="<%= user_path(session[:user_id]) %>" > [ WELCOME <%= User.find(session[:user_id]).name.upcase %> | DASHBOARD ]</a>
+            </li>
+            <li class="nav-item">
+              <a class= "nav-link js-scroll-trigger text-info">
+                <%= button_to("LOGOFF", logoff_path , method: :delete) %>
+              </a>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="/login">Login</a>
+            </li>
+          <% end %>
         </ul>
       </div>
     </div>
