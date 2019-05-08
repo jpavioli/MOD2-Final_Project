@@ -6,7 +6,7 @@ class CreateCompetitions < ActiveRecord::Migration[5.2]
       t.string :location
       t.datetime :datetime
       t.string :status
-
+      t.integer :competition_manager_id
       t.timestamps
     end
   end

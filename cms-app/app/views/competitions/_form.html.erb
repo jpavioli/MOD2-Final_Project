@@ -13,6 +13,8 @@
   <%= f.text_area :location %><br>
   <%= f.label "DateTime:" %>
   <%= f.date_select :datetime %><br>
+  <%= f.label "Competition Manager:" %>
+  <%= f.collection_select :competition_manager_id, @competition_managers, :id, :name %><br>
   <%= f.label "Status:" %>
   <%= f.text_field :status %>
   <%= f.submit %>

@@ -1,0 +1,16 @@
+<% if flash[:error] %>
+  <% flash[:error].each do |e| %>
+    <p><%= e %></p>
+  <%end%>
+<%end%>
+
+<%= form_tag "/login", controller:"users", method:"session_login" do %>
+  <%= label_tag "Username:" %>
+  <%= text_field_tag :username %><br/>
+  <%= label_tag "Password:" %>
+  <%= password_field_tag :password %><br>
+  <%= submit_tag "Log in" %>
+<% end %>
+<br>
+<%= link_to "New User", new_user_path %>
+<br>

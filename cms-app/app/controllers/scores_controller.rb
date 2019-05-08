@@ -1,6 +1,8 @@
 class ScoresController < ApplicationController
 
     before_action :current_score, only: [:show, :edit, :update, :destroy]
+    before_action :event_authenticate, only: [:new, :create]
+    before_action :event_user_authenticate, only: [:edit, :update, :destroy]
 
     def index
         @scores = Score.all
@@ -16,7 +18,7 @@ class ScoresController < ApplicationController
     def create
         @score = Score.new(score_params)
 
-        if @score.valid? 
+        if @score.valid?
             @score.save
             redirect_to @score
         else
@@ -29,8 +31,10 @@ class ScoresController < ApplicationController
     end
 
     def update
+
         @score = Score.new(score_params)
         if @score.valid? 
+
             @score.save
             redirect_to @score
         else
@@ -38,7 +42,7 @@ class ScoresController < ApplicationController
             redirect_to edit_score_path
         end
     end
-    
+
     def destroy
         @score.destroy
         redirect_to score_path
