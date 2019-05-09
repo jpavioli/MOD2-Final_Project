@@ -1,6 +1,4 @@
 <%= render 'form' %>
-
-<%= form_tag("/athletes/#{@athlete.id}", method: "delete") do %>
-<%= submit_tag("Delete Athlete")%>
-
+    <%= form_tag("/athletes/#{@athlete.id}", method: "delete") do %>
+    <%= submit_tag("Delete Athlete")%>
 <%end%>
