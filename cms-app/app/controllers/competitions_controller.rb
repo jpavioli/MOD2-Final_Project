@@ -33,13 +33,13 @@ class CompetitionsController < ApplicationController
     end
 
     def update
-        @competition = Competition.new(competition_params)
-        if @competition.valid?
-            @competition.update(competition_params)
-
-            redirect_to @competition
+        competition = Competition.new(competition_params)
+        if competition.valid?
+          current_competition
+          @competition.update(competition_params)
+          redirect_to @competition
         else
-            flash[:error] = @competition.errors.full_messages
+            flash[:error] = competition.errors.full_messages
             redirect_to edit_competition_path
         end
     end
