@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to competitions_path
     else
       flash[:error] = @user.errors.full_messages
-      redirect_to new_users_path
+      redirect_to new_user_path
     end
   end
 

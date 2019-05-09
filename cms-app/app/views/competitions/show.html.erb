@@ -34,7 +34,7 @@
   <br>
   <br>
   <br>
-<% if @user.id == @competition.competition_manager_id %>
+<% if @user && @user.id == @competition.competition_manager_id %>
   <div class="container">
     <div class="row">
       <div class="col">

@@ -3,7 +3,6 @@
   <p><%= e %></p>
   <%end%>
 <%end%>
-
 <%= form_for @athlete do |f| %>
   <%= f.label "Name:" %>
   <%= f.text_field :first_name %>
@@ -27,4 +26,4 @@
   <%= f.label "Team:" %>
   <%= f.collection_select :team_id, Team.all, :id, :name %><br>
   <%= f.submit %>
-<% end %>
+<%end%>

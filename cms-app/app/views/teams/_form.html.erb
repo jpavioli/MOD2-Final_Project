@@ -1,23 +1,22 @@
 <% if flash[:error] %>
-<% flash[:error].each do |e| %>
-<p><%= e %></p>
+    <% flash[:error].each do |e| %>
+    <p><%= e %></p>
+    <%end%>
 <%end%>
-<%end%>
-
 <%= form_for @team do |f| %>
-<%= f.label "Name:" %>
-<%= f.text_field :name %><br/>
-<%= f.label "Location:" %>
-<%= f.text_field :location %><br>
-<%= f.label "Sponsor:" %>
-<%= f.text_field :sponsor %><br>
-<%= f.label "Team Type:" %>
-<%= f.text_field :team_type %><br>
-<%= f.label "Mascot:" %>
-<%= f.text_field :mascot %><br>
-<%= f.label "Competition:" %>
-<%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"}%><br>
-<%= f.label "Team Manager:" %>
-<%= f.collection_select :team_manager_id, @team_managers, :id, :name, {:prompt => "Please select a Team Manger"}%><br>
-<%= f.submit %>
+    <%= f.label "Name:" %>
+    <%= f.text_field :name %><br/>
+    <%= f.label "Location:" %>
+    <%= f.text_field :location %><br>
+    <%= f.label "Sponsor:" %>
+    <%= f.text_field :sponsor %><br>
+    <%= f.label "Team Type:" %>
+    <%= f.text_field :team_type %><br>
+    <%= f.label "Mascot:" %>
+    <%= f.text_field :mascot %><br>
+    <%= f.label "Competition:" %>
+    <%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"}%><br>
+    <%= f.label "Team Manager:" %>
+    <%= f.collection_select :team_manager_id, @team_managers, :id, :name, {:prompt => "Please select a Team Manger"}%><br>
+    <%= f.submit %>
 <%end%>
