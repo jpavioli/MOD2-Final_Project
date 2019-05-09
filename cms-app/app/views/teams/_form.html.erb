@@ -4,19 +4,27 @@
     <%end%>
 <%end%>
 <%= form_for @team do |f| %>
-    <%= f.label "Name:" %>
-    <%= f.text_field :name %><br/>
-    <%= f.label "Location:" %>
-    <%= f.text_field :location %><br>
-    <%= f.label "Sponsor:" %>
-    <%= f.text_field :sponsor %><br>
-    <%= f.label "Team Type:" %>
-    <%= f.text_field :team_type %><br>
-    <%= f.label "Mascot:" %>
-    <%= f.text_field :mascot %><br>
-    <%= f.label "Competition:" %>
-    <%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"}%><br>
-    <%= f.label "Team Manager:" %>
-    <%= f.collection_select :team_manager_id, @team_managers, :id, :name, {:prompt => "Please select a Team Manger"}%><br>
-    <%= f.submit %>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h4><span class= "text-white"> Name: </span></h4>
+                <%= f.text_field :name %><br/>
+                <h4><span class= "text-white"> Location: </span></h4>
+                <%= f.text_field :location %><br>
+                <h4><span class= "text-white"> Sponsor: </span></h4>
+                <%= f.text_field :sponsor %><br>
+            </div>
+            <div class="col">
+                <h4><span class= "text-white"> Team Type: </span></h4>
+                <%= f.text_field :team_type %><br>
+                <h4><span class= "text-white"> Mascot: </span></h4>
+                <%= f.text_field :mascot %><br>
+                <h4><span class= "text-white"> Competition: </span></h4>
+                <%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"}%><br>
+                <h4><span class= "text-white"> Manager: </span></h4>
+                <%= f.collection_select :team_manager_id, @team_managers, :id, :name, {:prompt => "Please select a Team Manger"}%><br><br>
+                <%= f.submit %>
+            </div>
+        </div>
+    </div>
 <%end%>
