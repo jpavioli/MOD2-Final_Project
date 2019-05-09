@@ -31,10 +31,12 @@
     </div>
   </div>
 </div>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <h4><%= link_to "Edit Athlete", "/athletes/#{@athlete.id}/edit" %></h4>
+<% if @user && (@user.id == @athlete.team.competition.competition_manager_id || @user.id == @athlete.team.team_manager_id) %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4><%= link_to "Edit Athlete", "/athletes/#{@athlete.id}/edit" %></h4>
+      </div>
     </div>
   </div>
-</div>
+<%end%>
