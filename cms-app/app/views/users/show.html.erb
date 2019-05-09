@@ -9,7 +9,7 @@
       <% if @competitions != [] %>
         <h2 class="text-primary">Competitions:</h2>
         <% @competitions.each do|competition| %>
-          <h3><%= link_to competition.name, competitions_path(competition) %></h3>
+          <h3><%= link_to competition.name, competition_path(competition) %></h3>
           <span class="text-white">
           <p><%= competition.description %></p>
           </span>
@@ -81,7 +81,7 @@
         <% #intentionally left blank for formatting %>
       </div>
       <div class="col">
-        <%= link_to "Add Team", "/teams/new" %>
+        <h4><%= link_to "Add Team", "/teams/new" %></h4>
       </div>
     </div>
   </div>
