@@ -31,13 +31,14 @@ class EventsController < ApplicationController
     end
 
     def update
-        @event = Event.new(event_params)
-        if @event.valid? 
-            @event.update(event_params)
-            redirect_to @event
+        event = Event.new(event_params)
+        if event.valid?
+          current_event
+          @event.update(event_params)
+          redirect_to @event
         else
-            flash[:error] = @event.errors.full_messages
-            redirect_to edit_event_path
+          flash[:error] = event.errors.full_messages
+          redirect_to edit_event_path
         end
     end
 

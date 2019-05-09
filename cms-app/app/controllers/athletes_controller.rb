@@ -1,8 +1,8 @@
 class AthletesController < ApplicationController
 
     before_action :current_athlete, only: [:show, :edit, :update, :destroy]
-    before_action :team_authenticate, only: [:new, :create]
-    before_action :team_user_authenticate, only: [:edit, :update, :destroy]
+    before_action :athlete_authenticate, only: [:new, :create]
+    before_action :athlete_user_authenticate, only: [:edit, :update, :destroy]
 
     def index
         @athletes = Athlete.all
@@ -32,13 +32,14 @@ class AthletesController < ApplicationController
     end
 
     def update
-        @athlete = Athlete.new(athlete_params)
-        if @athlete.valid?
-            @athlete.update(athlete_params)
-            redirect_to @athlete
+        athlete = Athlete.new(athlete_params)
+        if athlete.valid?
+          current_athlete
+          @athlete.update(athlete_params)
+          redirect_to @athlete
         else
-            flash[:error] = @athlete.errors.full_messages
-            redirect_to edit_athlete_path
+          flash[:error] = athlete.errors.full_messages
+          redirect_to edit_athlete_path
         end
     end
 
