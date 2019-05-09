@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
 
   def event_user_authenticate
     event_manager_id = Event.find(params[:id]).event_manager_id
-    compeition_manager_id = Event.find(params[:id]).competition.competition_manager_id
+    competition_manager_id = Event.find(params[:id]).competition.competition_manager_id
     redirect_path = events_path
     redirect_to(redirect_path) unless (event_manager_id == session[:user_id] || competition_manager_id == session[:uer_id])
   end
