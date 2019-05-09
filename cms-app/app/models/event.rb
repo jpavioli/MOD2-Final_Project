@@ -45,18 +45,22 @@ class Event < ApplicationRecord
 
     def average_score
       #returns the average score for the event
-      avg = scores.map{|score| score.score }.inject{ |sum, score| sum + score } / scores.size
-      if score_type.downcase == "time"
-        Time.at(avg).utc.strftime("%H:%M:%S")
-      elsif score_type.downcase == "points"
-        avg
-      elsif score_type.downcase == "distance"
-        divmod_output = avg.divmod(12)
-        "#{divmod_output[0]} ft, #{divmod_output[1]} in"
-      elsif score_type.downcase == "load"
-        "#{avg} lbs"
+      if scores == []
+        "Event has not been Scored."
       else
-        "Invalid Event Type"
+        avg = scores.map{|score| score.score }.inject{ |sum, score| sum + score } / scores.size
+        if score_type.downcase == "time"
+          Time.at(avg).utc.strftime("%H:%M:%S")
+        elsif score_type.downcase == "points"
+          avg
+        elsif score_type.downcase == "distance"
+          divmod_output = avg.divmod(12)
+          "#{divmod_output[0]} ft, #{divmod_output[1]} in"
+        elsif score_type.downcase == "load"
+          "#{avg} lbs"
+        else
+          "Invalid Event Type"
+        end
       end
     end
 

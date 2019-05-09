@@ -16,6 +16,6 @@
 <%= f.label "Competition:" %>
 <%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"} %><br>
 <%= f.label "Event Manager:" %>
-<%= f.collection_select :event_manager_id, @event_managers, :id, :name, {:prompt => "Please select an EventsController Manger"}%><br>
+<%= f.collection_select :event_manager_id, @event_managers, :id, :name, {:prompt => "Please select an Event Manager"}%><br>
 <%= f.submit %>
 <% end %>

@@ -46,5 +46,4 @@ class Score < ApplicationRecord
     end
   end
 
-
 end
