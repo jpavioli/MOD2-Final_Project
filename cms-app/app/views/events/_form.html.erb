@@ -1,21 +1,27 @@
 <% if flash[:error] %>
-<% flash[:error].each do |e| %>
-<p><%= e %></p>
-<%end%>
+    <% flash[:error].each do |e| %>
+        <p><%= e %></p>
+    <%end%>
 <%end%>
 
 <%= form_for @event do |f| %>
-<%= f.label "Title:" %>
-<%= f.text_field :title %><br/>
-<%= f.label "Description:" %>
-<%= f.text_field :description %><br/>
-<%= f.label "Score Type:" %>
-<%= f.select(:score_type, options_for_select(['Time','Points','Distance','Load'].map{|g| [g,g]})) %><br>
-<%= f.label "Time:" %>
-<%= f.time_field :time %><br>
-<%= f.label "Competition:" %>
-<%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"} %><br>
-<%= f.label "Event Manager:" %>
-<%= f.collection_select :event_manager_id, @event_managers, :id, :name, {:prompt => "Please select an Event Manager"}%><br>
-<%= f.submit %>
+    <div class= "container">
+        <div class= "row">
+            <div class="col">
+                <h4><span class= "text-white"> Title: </span></h4>
+                <%= f.text_field :title %><br/>
+                <h4><span class= "text-white"> Description: </span></h4>
+                <%= f.text_field :description %><br/>
+                <h4><span class= "text-white"> Score Type: </span></h4>
+                <%= f.select(:score_type, options_for_select(['Time','Points','Distance','Load'].map{|g| [g,g]})) %><br>
+                <h4><span class= "text-white"> Time: </span></h4>
+                <%= f.time_field :time %><br>
+                <h4><span class= "text-white"> Competition: </span></h4>
+                <%= f.collection_select :competition_id, Competition.all, :id, :name, {:prompt => "Please select a Competition"} %><br>
+                <h4><span class= "text-white"> Event Manager: </span></h4>
+                <%= f.collection_select :event_manager_id, @event_managers, :id, :name, {:prompt => "Please select an Event Manager"}%><br><br><br>
+                <%= f.submit %>
+            </div>
+        </div>
+    </div>
 <% end %>
