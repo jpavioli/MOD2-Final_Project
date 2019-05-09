@@ -57,4 +57,14 @@ class ApplicationController < ActionController::Base
     redirect_to(redirect_path) unless user_id == session[:user_id]
   end
 
+  def athlete_authenticate
+    authenticate(['Team Manager','Competition Manager'],teams_path)
+  end
+
+  def athlete_user_authenticate
+    user_id = Athlete.find(params[:id]).team.team_manager_id
+    redirect_path = teams_path
+    redirect_to(redirect_path) unless user_id == session[:user_id]
+  end
+
 end

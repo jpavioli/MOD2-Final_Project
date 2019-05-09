@@ -34,45 +34,57 @@
     </div>
   </div>
 </div>
-
-
-
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 <% if @user.user_type == "Competition Manager" %>
-  <%= link_to "Add Competition", "/competitions/new" %> |
-  <%= link_to "Add Event", "/events/new" %> |
-  <%= link_to "Add Team", "/teams/new" %><br>
-<% end %>
-
-<% if @user.user_type == "Event Manager" %>
-  <%= link_to "Add Event", "/events/new" %><br>
-<% end %>
-
-<% if @user.user_type == "Team Manager" %>
-  <%= link_to "Add Team", "/teams/new" %><br>
-<% end %>
-
-<div class="container">
-  <div class="row">
-    <div class="col">
-      1 of 3
-    </div>
-    <div class="col">
-      2 of 3
-    </div>
-    <div class="col">
-      3 of 3
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h4><%= link_to "Add Competition", "/competitions/new" %></h4>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Add Event", "/events/new" %></h4>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Add Team", "/teams/new" %></h4>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
+<% if @user.user_type == "Event Manager" %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <% #intentionally left blank for formatting %>
+      </div>
+      <div class="col">
+        <h4><%= link_to "Add Event", "/events/new" %></h4>
+      </div>
+      <div class="col">
+        <% #intentionally left blank for formatting %>
+      </div>
+    </div>
+  </div>
+<% end %>
+<% if @user.user_type == "Team Manager" %>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <% #intentionally left blank for formatting %>
+      </div>
+      <div class="col">
+        <% #intentionally left blank for formatting %>
+      </div>
+      <div class="col">
+        <%= link_to "Add Team", "/teams/new" %>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       redirect_to competitions_path
     else
       flash[:error] = @user.errors.full_messages
-      redirect_to new_users_path
+      redirect_to new_user_path
     end
   end
 
@@ -23,12 +23,12 @@ class UsersController < ApplicationController
       @events = Event.all.select{|event| event.competition.competition_manager_id == session[:user_id]}
       @teams = Team.all.select{|team| team.competition.competition_manager_id == session[:user_id]}
     elsif @user.user_type == "Event Manager"
-      @competitions = Competition.all.select{|competition| competition.events.event_manager_id == session[:user_id]}.uniq
+      @competitions = Competition.all.select{|competition| competition.events.any?{|event| event.event_manager_id == session[:user_id]}}.uniq
       @events = Event.all.select{|event| event.event_manager_id == session[:user_id]}
-      @teams = Team.all.select{|team| team.events.event_manager_id == session[:user_id]}.uniq
+      @teams = Team.all.select{|team| team.events.any?{|event| event.event_manager_id == session[:user_id]}}.uniq
     elsif @user.user_type == "Team Manager"
-      @competitions = Competition.all.select{|competition| competition.teams.team_manager_id == session[:user_id]}.uniq
-      @events = Event.all.select{|event| event.teams.team_manager_id == session[:user_id]}.uniq
+      @competitions = Competition.all.select{|competition| competition.teams.any?{|team| team.team_manager_id == session[:user_id]}}.uniq
+      @events = Event.all.select{|event| event.teams.any?{|team| team.team_manager_id == session[:user_id]}}.uniq
       @teams = Team.all.select{|team| team.team_manager_id == session[:user_id]}
     end
   end
