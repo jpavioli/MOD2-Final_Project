@@ -13,11 +13,13 @@
 			</span>
 		</div>
 		<div class="col-8">
-			<% @team.scores.each do |score|%>
-				<li>
-				<%= link_to score.event.title, event_path(score.event) %>
-				</li>
-			<%end%>
+			<span class= "text-white">
+				<% @team.scores.each do |score|%>
+					<li>
+						<%= link_to score.event.title, event_path(score.event) %>
+					</li>
+				<%end%>
+			</span>
 		</div>
 	</div>
 </div>
