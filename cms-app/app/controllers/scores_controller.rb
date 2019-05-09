@@ -1,14 +1,26 @@
 class ScoresController < ApplicationController
 
     before_action :current_score, only: [:show, :edit, :update, :destroy]
-    before_action :event_authenticate, only: [:new, :create]
-    before_action :event_user_authenticate, only: [:edit, :update, :destroy]
+    before_action :score_authenticate, only: [:new, :create]
+    before_action :score_user_authenticate, only: [:edit, :update, :destroy]
 
     def index
       @scores = Score.all
     end
 
     def show
+    end
+
+    def event_scores
+      @event = Event.all.find(params[:id])
+    end
+
+    def team_scores
+      @team = Team.all.find(params[:id])
+    end
+
+    def competition_scores
+      @competition = Competition.all.find(params[:id])
     end
 
     def new

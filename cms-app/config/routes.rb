@@ -14,5 +14,8 @@ Rails.application.routes.draw do
   delete "/logoff", to: "users#session_logoff"
   get "/competitions/:id/event/new", to: "events#new"
   get "/competitions/:id/team/new", to: "teams#new"
+  get "/events/:id/scores", to: "scores#event_scores"
+  get "/teams/:id/scores", to: "scores#team_scores"
+  get "/competitions/:id/scores", to: "scores#competition_scores"
 
 end
