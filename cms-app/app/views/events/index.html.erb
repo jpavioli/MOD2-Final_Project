@@ -1,11 +1,11 @@
 <section>
 <div class="container">
   <div class="row">
-	<div class="col-sm-8">
-	<h1 class="text-white">All Events</h1>
-	<span class="text-white">
-	<% @events.each do |event|%>
-        <%= link_to event.title, event_path(event) %> | <%= link_to event.competition.name, competition_path(event.competition) %> <br>
+		<div class="col-sm-8">
+			<h1 class="text-white">All Events</h1>
+			<span class="text-white">
+				<% @events.each do |event|%><br>
+        	<font size="+1"><%= link_to event.title, event_path(event) %> | <%= link_to event.competition.name, competition_path(event.competition) %></font></br>
         <%= event.description %> <br>
         <br>
   <%end%>
