@@ -1,24 +1,36 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WELCOME TO READY. SET. GO.
 
-Things you may want to cover:
+This application is a custom built competition management software, that helps
+manage events, competitions, and teams.
 
-* Ruby version
+The user has read-only access to view all information pertaining to:
 
-* System dependencies
+- Competitions
+- Events
+- Teams
+- Athletes
+- Scores
 
-* Configuration
+To begin, you login as either a competition manager, event manager, or team manager.
 
-* Database creation
+The Competition manager has the ability to create and manage their own:
 
-* Database initialization
+- Competitions
+- Events
+- Teams
+- Athletes
+- Scores
 
-* How to run the test suite
+The Event manager has the ability to manage their own:
 
-* Services (job queues, cache servers, search engines, etc.)
+- Events
+- Scores
 
-* Deployment instructions
+The Team manager has the ability to manage their own:
 
-* ...
+- Teams
+- Athletes
+
+Once logged in each type of manager has access to view and edit everything that they’ve created.
