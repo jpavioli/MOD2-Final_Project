@@ -1,14 +1,20 @@
 <% if flash[:error] %>
-  <% flash[:error].each do |e| %>
-  <p><%= e %></p>
-  <%end%>
+  <div class="container">
+    <div class="row">
+      <div class="col-center">
+        <% flash[:error].each do |e| %>
+          <h1 class="text-danger"><%= e %></h1>
+        <%end%>
+      </div>
+    </div>
+  </div>
 <%end%>
 <%= form_for @athlete do |f| %>
   <div class= "container">
     <div class= "row">
       <div class="col">
         <h4><span class= "text-white"> Name: </span></h4>
-        <%= f.text_field :first_name %> 
+        <%= f.text_field :first_name %>
         <%= f.text_field :last_name %><br>
       </div>
     </div>
